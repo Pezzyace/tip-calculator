@@ -18,27 +18,30 @@
       <div class="mr-[10px]">
         <div class="flex flex-col mb-[20px]">
           <p class="uppercase text-[#7f9c9f] mb-[7px]">Bill</p>
-          <div class="bg-[#f4fafa] py-[7px] px-[10px] rounded flex items-center border-4 border-[#f4fafa] hover:border-[#c5e4e7]" id="input-div">
+          <div class="bg-[#f4fafa] py-[7px] px-[10px] rounded flex items-center border-2 border-[#f4fafa] hover:border-[#c5e4e7] div" id="input-div">
             <img src="images/icon-dollar.svg" alt="" class="pr-[5px]">
-            <input type="text" placeholder="0" class="border-0 bg-[inherit] outline-0 w-full text-[17px]" id="bill-input">
+            <input type="text" placeholder="0" class="border-0 bg-[inherit] outline-0 w-full text-[17px] text-right input" id="billAmount">
           </div>
         </div>
         <div>
           <p class="text-[#7f9c9f] mb-[7px]">Select Tip %</p>
           <div class="grid grid-cols-3 gap-[8px] mb-[30px]">
-            <button class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">5%</button>
-            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">10%</button>
-            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">15%</button>
-            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">25%</button>
-            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">50%</button>
-            <input type="text" placeholder="Custom" class="bg-[#f4fafa] text-[#00494d] rounded text-[20px] pl-[10px] outline-0">
+            <button class="tip-button bg-[#00494d] text-[white] p-[5px] rounded text-[20px] hover:bg-[#c5e4e7]" data-tip-percent="5">5%</button>
+            <button class="tip-button bg-[#00494d] text-[white] p-[5px] rounded text-[20px] hover:bg-[#c5e4e7]" data-tip-percent="10">10%</button>
+            <button class="tip-button bg-[#00494d] text-[white] p-[5px] rounded text-[20px] hover:bg-[#c5e4e7]" data-tip-percent="15">15%</button>
+            <button class="tip-button bg-[#00494d] text-[white] p-[5px] rounded text-[20px] hover:bg-[#c5e4e7]" data-tip-percent="25">25%</button>
+            <button class="tip-button bg-[#00494d] text-[white] p-[5px] rounded text-[20px] hover:bg-[#c5e4e7]" data-tip-percent="50">50%</button>
+            <input type="text" placeholder="Custom" class="bg-[#f4fafa] text-[#00494d] rounded text-[20px] px-[10px] outline-0 text-right border-2 border-[#f4fafa] hover:border-[#c5e4e7]" id="customTip">
           </div>
         </div>
         <div class="mb-[10px]">
-          <p class="text-[#7f9c9f] mb-[7px]">Number of People</p>
-          <div class="bg-[#f4fafa] py-[7px] px-[10px] rounded flex items-center">
+          <div class="mb-[7px] flex justify-between">
+            <p class="text-[#7f9c9f]">Number of People</p>
+            <span class="text-[#ff0000]" id="errorMsg"></span>
+          </div>
+          <div class="bg-[#f4fafa] py-[7px] px-[10px] rounded flex items-center border-2 border-[#f4fafa] hover:border-[#c5e4e7] div" id="inputDiv">
             <img src="images/icon-person.svg" alt="" class="pr-[5px]">
-            <input type="text" placeholder="0" class="border-0 bg-[inherit] outline-0 w-full text-[17px]">
+            <input type="text" placeholder="0" class="border-0 bg-[inherit] outline-0 w-full text-[17px] text-right" id="numOfPersons">
           </div>
         </div>
       </div>
@@ -49,17 +52,17 @@
               <p class="text-white">Tip Amount</p>
               <p class="text-[#5e7a7d]">/ person</p>
             </div>
-            <p class="text-[30px] text-[#26c0ab]">$<span class="">0.00</span></p>
+            <p class="text-[30px] text-[#26c0ab]"><span class="" id="tipPerPerson">$0.00</span></p>
           </div>
           <div class="flex justify-between items-center mb-[20px]">
             <div>
-              <p class="text-white">Tip Amount</p>
+              <p class="text-white">Total</p>
               <p class="text-[#5e7a7d]">/ person</p>
             </div>
-            <p class="text-[30px] text-[#26c0ab]">$<span class="">0.00</span></p>
+            <p class="text-[30px] text-[#26c0ab]"><span class="" id="totalTip">$0.00</span></p>
           </div>
         </div>
-        <button class="w-full p-[7px] rounded uppercase bg-[#7f9c9f] text-[#5e7a7d]">
+        <button class="w-full p-[7px] rounded uppercase bg-[#7f9c9f] text-[#00494d] hover:bg-[#c5e4e7]" id="resetButton">
           Reset
         </button>
       </div>
@@ -76,22 +79,30 @@
       color: #00494d;
       color: #5e7a7d;
       color: #7f9c9f;
-      color: #c5e4e7;
+      color: #b7dfe3;
       color: #f4fafa;
       color: #ffffff;
       font-family: 'Space Mono', monospace;
     }
-    .section1{
-      width: 100%;
-      margin-top: 30px;
+
+    @media(width <= 375px){
+      .section1{
+        width: 100%;
+        margin-top: 30px;
+      }
+      .section2{
+        grid-template-columns: 1fr;
+        border-radius: 20px;
+      }
+      .section3{
+        border-radius: 15px;
+      }
+      .input:focus .div{
+        outline: 2px solid #ff0000;
+      }
     }
-    .section2{
-      grid-template-columns: 1fr;
-      border-radius: 20px;
-    }
-    .section3{
-      border-radius: 15px;
-    }
+    
   </style>
+  <script src="script.js"></script>
 </body>
 </html>

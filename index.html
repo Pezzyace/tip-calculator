@@ -4,10 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <title>Frontend Mentor | Tip calculator app</title>
+  
+</head>
+<body class="bg-[#c5e4e7] h-full w-full flex flex-col gap-[30px] items-center justify-center font-['Space_Mono']">
+  <section class="flex flex-col items-center justify-center w-6/12 m-auto mt-28 section1">
+    <img src="images/logo.svg" alt="Logo" class="mb-16 w-[50px]">
+    <section class="grid grid-cols-2 gap-[40px] p-[20px] rounded-lg bg-white section2">
+      <div class="mr-[10px]">
+        <div class="flex flex-col mb-[20px]">
+          <p class="uppercase text-[#7f9c9f] mb-[7px]">Bill</p>
+          <div class="bg-[#f4fafa] py-[7px] px-[10px] rounded flex items-center border-4 border-[#f4fafa] hover:border-[#c5e4e7]" id="input-div">
+            <img src="images/icon-dollar.svg" alt="" class="pr-[5px]">
+            <input type="text" placeholder="0" class="border-0 bg-[inherit] outline-0 w-full text-[17px]" id="bill-input">
+          </div>
+        </div>
+        <div>
+          <p class="text-[#7f9c9f] mb-[7px]">Select Tip %</p>
+          <div class="grid grid-cols-3 gap-[8px] mb-[30px]">
+            <button class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">5%</button>
+            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">10%</button>
+            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">15%</button>
+            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">25%</button>
+            <button  class="bg-[#00494d] text-[white] p-[5px] rounded text-[20px]">50%</button>
+            <input type="text" placeholder="Custom" class="bg-[#f4fafa] text-[#00494d] rounded text-[20px] pl-[10px] outline-0">
+          </div>
+        </div>
+        <div class="mb-[10px]">
+          <p class="text-[#7f9c9f] mb-[7px]">Number of People</p>
+          <div class="bg-[#f4fafa] py-[7px] px-[10px] rounded flex items-center">
+            <img src="images/icon-person.svg" alt="" class="pr-[5px]">
+            <input type="text" placeholder="0" class="border-0 bg-[inherit] outline-0 w-full text-[17px]">
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#00494d] rounded-lg p-[30px] flex flex-col justify-between h-full section3">
+        <div>
+          <div class="flex justify-between items-center mb-[20px]">
+            <div>
+              <p class="text-white">Tip Amount</p>
+              <p class="text-[#5e7a7d]">/ person</p>
+            </div>
+            <p class="text-[30px] text-[#26c0ab]">$<span class="">0.00</span></p>
+          </div>
+          <div class="flex justify-between items-center mb-[20px]">
+            <div>
+              <p class="text-white">Tip Amount</p>
+              <p class="text-[#5e7a7d]">/ person</p>
+            </div>
+            <p class="text-[30px] text-[#26c0ab]">$<span class="">0.00</span></p>
+          </div>
+        </div>
+        <button class="w-full p-[7px] rounded uppercase bg-[#7f9c9f] text-[#5e7a7d]">
+          Reset
+        </button>
+      </div>
+    </section>
+  </section>
+  <div class="text-[11px] text-center">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="text-[#00494d]">Frontend Mentor</a>. 
+    Coded by <a href="https://www.frontendmentor.io/profile/Pezzyace">Peace Akaehomen</a>.
+  </div>
+
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
     .color{
       color: #26c0ab;
       color: #00494d;
@@ -16,64 +79,19 @@
       color: #c5e4e7;
       color: #f4fafa;
       color: #ffffff;
+      font-family: 'Space Mono', monospace;
+    }
+    .section1{
+      width: 100%;
+      margin-top: 30px;
+    }
+    .section2{
+      grid-template-columns: 1fr;
+      border-radius: 20px;
+    }
+    .section3{
+      border-radius: 15px;
     }
   </style>
-</head>
-<body>
-  <section>
-    <img src="images/logo.svg" alt="">
-    <section>
-      <div>
-        <div>
-          <p>Bill</p>
-          <div>
-            <img src="images/icon-dollar.svg" alt="">
-            <input type="text" placeholder="0">
-          </div>
-        </div>
-        <div>
-          <p>Select Tip %</p>
-          <div>
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>25%</button>
-            <button>50%</button>
-            <input type="text">
-          </div>
-        </div>
-        <div>
-          <p>Number of People</p>
-          <div>
-            <img src="images/icon-person.svg" alt="">
-            <input type="text">
-          </div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <div>
-            <div>
-              <p>Tip Amount</p>
-              <p>/ person</p>
-            </div>
-            <span>$0.00</span>
-          </div>
-          <div>
-            <div>
-              <p>Tip Amount</p>
-              <p>/ person</p>
-            </div>
-            <span>$0.00</span>
-          </div>
-        </div>
-        <button>Reset</button>
-      </div>
-    </section>
-  </section>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
 </html>
